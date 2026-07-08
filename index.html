@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Martí | Portafolio Técnico</title>
+    <title>Luis David Martí | Portafolio Técnico</title>
     <style>
         :root {
-            --bg-color: #0f172a;
             --card-bg: #1e293b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
@@ -15,12 +14,62 @@
         }
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            /* El color de fondo ahora lo maneja la clase .background */
         }
+
+        /* --- INICIO ANIMACIÓN DE FONDO --- */
+        .background {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            background: #4e54c8;
+            overflow: hidden;
+            z-index: -1; /* CRUCIAL: Envía la animación al fondo para poder hacer clic en los botones */
+        }
+        .background li {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: animate 19s linear infinite;
+        }
+
+        /* Corregido de nth-child(0) al 10 */
+        .background li:nth-child(1) { left: 59%; width: 169px; height: 169px; bottom: -169px; animation-delay: 1s; }
+        .background li:nth-child(2) { left: 30%; width: 196px; height: 196px; bottom: -196px; animation-delay: 3s; }
+        .background li:nth-child(3) { left: 4%; width: 133px; height: 133px; bottom: -133px; animation-delay: 3s; }
+        .background li:nth-child(4) { left: 49%; width: 141px; height: 141px; bottom: -141px; animation-delay: 14s; }
+        .background li:nth-child(5) { left: 31%; width: 114px; height: 114px; bottom: -114px; animation-delay: 7s; }
+        .background li:nth-child(6) { left: 74%; width: 148px; height: 148px; bottom: -148px; animation-delay: 16s; }
+        .background li:nth-child(7) { left: 36%; width: 176px; height: 176px; bottom: -176px; animation-delay: 4s; }
+        .background li:nth-child(8) { left: 72%; width: 111px; height: 111px; bottom: -111px; animation-delay: 25s; }
+        .background li:nth-child(9) { left: 9%; width: 157px; height: 157px; bottom: -157px; animation-delay: 37s; }
+        .background li:nth-child(10) { left: 46%; width: 128px; height: 128px; bottom: -128px; animation-delay: 25s; }
+
+        @keyframes animate {
+            0%{
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+            }
+            100%{
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+        /* --- FIN ANIMACIÓN DE FONDO --- */
+
         header {
             text-align: center;
             padding: 80px 20px 40px;
@@ -30,12 +79,12 @@
         h1 {
             font-size: 3rem;
             margin-bottom: 10px;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
+            background: linear-gradient(to right, #38bdf8, #f8fafc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         header p {
-            color: var(--text-muted);
+            color: var(--text-main);
             font-size: 1.2rem;
         }
         .container {
@@ -57,10 +106,11 @@
             border: 1px solid #334155;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para resaltar sobre el nuevo fondo */
         }
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
             border-color: var(--accent);
         }
         .card h3 {
@@ -81,7 +131,7 @@
             gap: 8px;
         }
         .tag {
-            background-color: #0f172a;
+            background-color: rgba(15, 23, 42, 0.6);
             color: var(--accent);
             padding: 4px 10px;
             border-radius: 9999px;
@@ -107,13 +157,18 @@
         footer {
             text-align: center;
             padding: 40px;
-            color: var(--text-muted);
+            color: var(--text-main);
             margin-top: 40px;
-            border-top: 1px solid #334155;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 <body>
+
+    <ul class="background">
+        <li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li>
+    </ul>
 
     <header>
         <h1>David Martí</h1>
@@ -125,31 +180,6 @@
 
         <div class="grid">
 
-            <!-- Proyecto Lectura JSON a BD -->
-            <div class="card">
-                <h3>ETL: Ingesta de JSON a Base de Datos</h3>
-                <p>Desarrollo de una solución para la lectura, parseo y migración automatizada de estructuras de datos en formato JSON hacia un motor de base de datos, asegurando la integridad de la información.</p>
-                <div class="tags">
-                    <span class="tag">Bases de Datos</span>
-                    <span class="tag">JSON</span>
-                    <span class="tag">Procesamiento de Datos</span>
-                </div>
-                <a href="https://github.com/davesnake01/LecturaJsontoBD" class="btn" target="_blank">Ver código y documentación</a>
-            </div>
-
-            <!-- Proyecto Elasticsearch a Pandas/Excel -->
-            <div class="card">
-                <h3>Exportación de Datos: Elasticsearch a Excel</h3>
-                <p>Desarrollo de un flujo automatizado en Python para extraer registros desde Elasticsearch, procesar la información mediante DataFrames de Pandas y generar reportes estructurados en formato Excel.</p>
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Elasticsearch</span>
-                    <span class="tag">Pandas</span>
-                    <span class="tag">Reporteo</span>
-                </div>
-                <a href="https://github.com/davesnake01/ElastictoPandasExcel" class="btn" target="_blank">Ver código y documentación</a>
-            </div>
-
             <div class="card">
                 <h3>Extracción de Entidades (NLP)</h3>
                 <p>Desarrollo de un script en Python enfocado en analizar volúmenes de texto no estructurado para aislar y extraer nombres de personas mediante expresiones regulares. Optimizado para limpieza de datos y pipelines ETL.</p>
@@ -157,31 +187,41 @@
                     <span class="tag">Python</span>
                     <span class="tag">Regex</span>
                     <span class="tag">ETL</span>
-                    <span class="tag">Procesamiento de Datos</span>
                 </div>
-                <a href="https://github.com/davesnake01/ExtractHumanNames" class="btn" target="_blank">Ver código y documentación</a>
+                <a href="https://github.com/davesnake01/ExtractHumanNames" class="btn" target="_blank">Ver documentación</a>
             </div>
 
             <div class="card">
-                <h3>Entorno de IA Local</h3>
-                <p>Despliegue de entorno de inteligencia artificial utilizando Open WebUI enlazado a la API de Anthropic, optimizando los flujos de comprobación y corrección de código en Python.</p>
+                <h3>Elasticsearch a Excel</h3>
+                <p>Flujo automatizado en Python para extraer registros desde Elasticsearch, procesar la información mediante DataFrames de Pandas y generar reportes estructurados en formato Excel.</p>
                 <div class="tags">
                     <span class="tag">Python</span>
-                    <span class="tag">Open WebUI</span>
-                    <span class="tag">Automatización</span>
+                    <span class="tag">Elasticsearch</span>
+                    <span class="tag">Pandas</span>
                 </div>
-                <a href="https://github.com/davesnake01/TU-REPO-AQUI" class="btn" target="_blank">Ver documentación</a>
+                <a href="https://github.com/davesnake01/ElastictoPandasExcel" class="btn" target="_blank">Ver documentación</a>
             </div>
 
             <div class="card">
-                <h3>Arquitectura Self-Hosted (Home Lab)</h3>
-                <p>Despliegue y administración de contenedores Docker en entornos ZimaOS/CasaOS. Mantenimiento de bases de datos y gestión de plataformas open source como Immich y RoMM.</p>
+                <h3>Ingesta de JSON a BD</h3>
+                <p>Solución para la lectura, parseo y migración automatizada de estructuras de datos en formato JSON hacia un motor de base de datos, asegurando la integridad de la información.</p>
                 <div class="tags">
-                    <span class="tag">Docker</span>
-                    <span class="tag">Linux</span>
-                    <span class="tag">CasaOS</span>
+                    <span class="tag">Bases de Datos</span>
+                    <span class="tag">JSON</span>
+                    <span class="tag">ETL</span>
                 </div>
-                <a href="https://github.com/davesnake01/TU-REPO-AQUI" class="btn" target="_blank">Ver documentación</a>
+                <a href="https://github.com/davesnake01/LecturaJsontoBD" class="btn" target="_blank">Ver documentación</a>
+            </div>
+
+            <div class="card">
+                <h3>Web Scraper: "La Segunda"</h3>
+                <p>Herramienta de extracción automatizada (crawler) para obtener y procesar información desde la plataforma del medio La Segunda, optimizando la recolección de datos.</p>
+                <div class="tags">
+                    <span class="tag">Web Scraping</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Automatización</span>
+                </div>
+                <a href="https://github.com/davesnake01/CrawlerlaSegunda" class="btn" target="_blank">Ver documentación</a>
             </div>
 
         </div>
