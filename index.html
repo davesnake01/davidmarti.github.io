@@ -3,32 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio TI | Tu Nombre</title>
+    <title>David Martí | Portafolio Técnico</title>
     <style>
-        body { font-family: system-ui, sans-serif; margin: 0 auto; max-width: 800px; padding: 40px 20px; line-height: 1.6; color: #333; }
-        h1 { border-bottom: 2px solid #0366d6; padding-bottom: 10px; }
-        .project-card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin-bottom: 20px; background-color: #f9f9f9; }
-        .tech-tag { background: #e1e4e8; padding: 4px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 5px; }
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            border-color: var(--accent);
+        }
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            color: #f1f5f9;
+        }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        .tags {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tag {
+            background-color: #0f172a;
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid #334155;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #0f172a;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.2s;
+            margin-top: auto;
+        }
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            margin-top: 40px;
+            border-top: 1px solid #334155;
+        }
     </style>
 </head>
 <body>
-    <h1>Hola, soy David Martí</h1>
-    <p>Especialista TI y técnico. Me enfoco en resolver problemas de infraestructura, automatización y despliegue de soluciones. Aquí puedes ver una selección de mis proyectos documentados.</p>
 
-    <h2>Proyectos Destacados</h2>
+    <header>
+        <h1>David Martí</h1>
+        <p>Técnico TI | Infraestructura, Automatización y Self-Hosting</p>
+    </header>
 
-    <div class="project-card">
-        <h3>Migración y Despliegue de Servicios</h3>
-        <p><strong>El Desafío:</strong> Migrar la infraestructura web y los correos corporativos de un cliente sin tiempos de inactividad, saltando restricciones de ISP.</p>
-        <p><strong>La Solución:</strong> Implementación de contenedores y configuración de túneles y DNS personalizados para garantizar la continuidad operativa.</p>
-        <div>
-            <span class="tech-tag">Docker</span>
-            <span class="tech-tag">DNS / Redes</span>
-            <span class="tech-tag">Linux</span>
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 10px; font-size: 2rem;">Proyectos Destacados</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>Bypass de ISP & DNS Local</h3>
+                <p>Configuración de red avanzada para sortear restricciones del router del proveedor, implementando Pi-hole para el bloqueo de rastreadores y resolución de DNS personalizado en toda la red local.</p>
+                <div class="tags">
+                    <span class="tag">Redes</span>
+                    <span class="tag">Pi-hole</span>
+                    <span class="tag">DNS</span>
+                </div>
+                <a href="https://github.com/davesnake01/TU-REPO-AQUI" class="btn" target="_blank">Ver documentación</a>
+            </div>
+
+            <div class="card">
+                <h3>Modificación IoT: Tasmota en Sonoff</h3>
+                <p>Modificación de hardware de enchufe inteligente (Sonoff S26R2). Flasheo de firmware de código abierto mediante convertidor USB a TTL para eliminar la dependencia de la nube de fabricantes.</p>
+                <div class="tags">
+                    <span class="tag">Hardware</span>
+                    <span class="tag">IoT</span>
+                    <span class="tag">Tasmota</span>
+                </div>
+                <a href="https://github.com/davesnake01/TU-REPO-AQUI" class="btn" target="_blank">Ver documentación</a>
+            </div>
+
+            <div class="card">
+                <h3>Migración Web y Correo Corporativo</h3>
+                <p>Planificación y ejecución de migración de dominio (.cl), sitio WordPress y plataforma de correos corporativos hacia Zoho Mail, garantizando la continuidad operativa sin pérdida de datos.</p>
+                <div class="tags">
+                    <span class="tag">WordPress</span>
+                    <span class="tag">Zoho Mail</span>
+                    <span class="tag">Sysadmin</span>
+                </div>
+                <a href="https://github.com/davesnake01/TU-REPO-AQUI" class="btn" target="_blank">Ver documentación</a>
+            </div>
+
+            <div class="card">
+                <h3>Entorno de IA Local</h3>
+                <p>Despliegue de entorno de inteligencia artificial utilizando Open WebUI enlazado a la API de Anthropic, optimizando los flujos de comprobación y corrección de código en Python.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Open WebUI</span>
+                    <span class="tag">Automatización</span>
+                </div>
+                <a href="https://github.com/davesnake01/TU-REPO-AQUI" class="btn" target="_blank">Ver documentación</a>
+            </div>
+
+            <div class="card">
+                <h3>Arquitectura Self-Hosted (Home Lab)</h3>
+                <p>Despliegue y administración de contenedores Docker en entornos ZimaOS/CasaOS. Mantenimiento de bases de datos y gestión de plataformas open source como Immich y RoMM.</p>
+                <div class="tags">
+                    <span class="tag">Docker</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">CasaOS</span>
+                </div>
+                <a href="https://github.com/davesnake01/TU-REPO-AQUI" class="btn" target="_blank">Ver documentación</a>
+            </div>
+
         </div>
-        <br>
-        <a href="enlace-al-repositorio-con-la-documentacion">Ver detalles del proyecto &rarr;</a>
     </div>
+
+    <footer>
+        <p>&copy; 2026 David Martí. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 </html>
