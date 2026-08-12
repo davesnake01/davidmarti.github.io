@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis David Martí | Portafolio Técnico</title>
+    <style>
+        :root {
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            /* El color de fondo ahora lo maneja la clase .background */
+        }
+
+        /* --- INICIO ANIMACIÓN DE FONDO --- */
+        .background {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            background: #4e54c8;
+            overflow: hidden;
+            z-index: -1; /* CRUCIAL: Envía la animación al fondo para poder hacer clic en los botones */
+        }
+        .background li {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: animate 19s linear infinite;
+        }
+
+        /* Corregido de nth-child(0) al 10 */
+        .background li:nth-child(1) { left: 59%; width: 169px; height: 169px; bottom: -169px; animation-delay: 1s; }
+        .background li:nth-child(2) { left: 30%; width: 196px; height: 196px; bottom: -196px; animation-delay: 3s; }
+        .background li:nth-child(3) { left: 4%; width: 133px; height: 133px; bottom: -133px; animation-delay: 3s; }
+        .background li:nth-child(4) { left: 49%; width: 141px; height: 141px; bottom: -141px; animation-delay: 14s; }
+        .background li:nth-child(5) { left: 31%; width: 114px; height: 114px; bottom: -114px; animation-delay: 7s; }
+        .background li:nth-child(6) { left: 74%; width: 148px; height: 148px; bottom: -148px; animation-delay: 16s; }
+        .background li:nth-child(7) { left: 36%; width: 176px; height: 176px; bottom: -176px; animation-delay: 4s; }
+        .background li:nth-child(8) { left: 72%; width: 111px; height: 111px; bottom: -111px; animation-delay: 25s; }
+        .background li:nth-child(9) { left: 9%; width: 157px; height: 157px; bottom: -157px; animation-delay: 37s; }
+        .background li:nth-child(10) { left: 46%; width: 128px; height: 128px; bottom: -128px; animation-delay: 25s; }
+
+        @keyframes animate {
+            0%{
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+            }
+            100%{
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+        /* --- FIN ANIMACIÓN DE FONDO --- */
+
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #38bdf8, #f8fafc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            color: var(--text-main);
+            font-size: 1.2rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para resaltar sobre el nuevo fondo */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            border-color: var(--accent);
+        }
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            color: #f1f5f9;
+        }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        .tags {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tag {
+            background-color: rgba(15, 23, 42, 0.6);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid #334155;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #0f172a;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.2s;
+            margin-top: auto;
+        }
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-main);
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <ul class="background">
+        <li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li>
+    </ul>
+
+    <header>
+        <h1>Luis David Martí</h1>
+        <p style="font-size: 1.3rem; color: #38bdf8; font-weight: 600;">Senior Backend Engineer & Tech Lead</p>
+        <p style="font-size: 1rem; color: #cbd5e1;">Automatización • Python • Arquitectura de Datos • Liderazgo</p>
+
+        <div style="margin-top: 50px; max-width: 750px; margin-left: auto; margin-right: auto; text-align: left; background: rgba(30, 41, 59, 0.7); padding: 30px; border-radius: 12px; border: 1px solid #334155;">
+            <h3 style="color: #38bdf8; margin-top: 0; font-size: 1.2rem;">Sobre mí</h3>
+            <p style="color: #cbd5e1; line-height: 1.8; margin: 0 0 15px 0;">
+                Ingeniero de software con <strong>20+ años</strong> de experiencia liderando equipos de alto rendimiento y desarrollando soluciones backend complejas.
+                Mi especialidad es <strong>diseñar y automatizar pipelines de datos</strong> que procesan volúmenes masivos en producción.
+            </p>
+            <p style="color: #cbd5e1; line-height: 1.8; margin: 0 0 15px 0;">
+                En <strong>LitoralPress Media</strong>, lideré un equipo de 5-8 personas mientras mantenía participación técnica directa:
+            </p>
+            <ul style="color: #cbd5e1; line-height: 1.8; margin: 0 0 15px 0; padding-left: 20px;">
+                <li><strong>80.000 registros/día</strong> - Pipeline multicanal (TV, radio, digital, redes sociales) para 300 clientes activos</li>
+                <li><strong>NLP en producción</strong> - Modelo de análisis de sentimiento que clasifica contenido en tiempo real</li>
+                <li><strong>99.9% uptime</strong> - Migración completa de infraestructura a AWS (S3, EC2, Docker)</li>
+                <li><strong>Automatización total</strong> - Newsletters y reportes sin intervención manual, sistemas de inventario con Coolify</li>
+            </ul>
+            <p style="color: #cbd5e1; line-height: 1.8; margin: 0;">
+                <strong>Stack:</strong> Python • FastAPI • Elasticsearch • NLP • Machine Learning • AWS • Docker • Coolify • Linux
+            </p>
+        </div>
+
+        <div style="margin-top: 30px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://linkedin.com/in/luisdavidmarti" target="_blank" style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; text-decoration: none; font-weight: 600; padding: 8px 16px; border-radius: 6px; border: 1px solid #38bdf8; transition: all 0.2s;">📌 LinkedIn</a>
+            <a href="https://github.com/davesnake01" target="_blank" style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; text-decoration: none; font-weight: 600; padding: 8px 16px; border-radius: 6px; border: 1px solid #38bdf8; transition: all 0.2s;">💻 GitHub</a>
+            <a href="mailto:luisdavidm1979@gmail.com" style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; text-decoration: none; font-weight: 600; padding: 8px 16px; border-radius: 6px; border: 1px solid #38bdf8; transition: all 0.2s;">✉️ Contacto</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 10px; font-size: 2rem;">Proyectos Destacados</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>🔍 Extracción de Entidades (NLP)</h3>
+                <p><strong>Contexto:</strong> Sistema usado en LitoralPress para procesar millones de menciones de personas en noticias y redes sociales.
+                Parte del pipeline de análisis que alimenta reportes a 300+ clientes.</p>
+                <p>Script optimizado en Python que analiza volúmenes masivos de texto no estructurado para aislar y extraer nombres de personas con alta precisión.
+                Implementa expresiones regulares avanzadas y limpieza de datos para garantizar integridad en pipelines ETL de producción.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">NLP</span>
+                    <span class="tag">Regex</span>
+                    <span class="tag">ETL</span>
+                </div>
+                <a href="https://github.com/davesnake01/ExtractHumanNames" class="btn" target="_blank">Ver en GitHub</a>
+            </div>
+
+            <div class="card">
+                <h3>📊 Elasticsearch a Excel (Automatización de Reportes)</h3>
+                <p><strong>Contexto:</strong> Sistema de reportes automatizados en LitoralPress. Extrae y procesa 80.000+ registros diarios de Elasticsearch
+                para generar informes distribuidos a 300 clientes, <strong>sin intervención manual</strong>. Reduce tiempo de generación de horas a minutos.</p>
+                <p>Pipeline Python que consulta Elasticsearch, procesa datos con Pandas, y genera reportes estructurados en Excel listos para distribución.
+                Incluye validación de datos, manejo de errores y notificaciones automáticas.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Elasticsearch</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">Automatización</span>
+                </div>
+                <a href="https://github.com/davesnake01/ElastictoPandasExcel" class="btn" target="_blank">Ver en GitHub</a>
+            </div>
+
+            <div class="card">
+                <h3>🗄️ Pipeline ETL: Ingesta de JSON a Base de Datos</h3>
+                <p><strong>Contexto:</strong> Sistema crítico para migración e ingesta de datos en LitoralPress. Procesa fuentes JSON heterogéneas (APIs, archivos, feeds)
+                y los migra de forma automática a base de datos con validación de integridad.</p>
+                <p>Solución ETL robusta que lee, parsea y migra estructuras JSON complejas hacia bases de datos. Incluye validación de esquemas,
+                manejo de datos inconsistentes y recuperación ante errores. Garantiza integridad de datos en volúmenes altos.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">ETL</span>
+                    <span class="tag">JSON</span>
+                    <span class="tag">SQL</span>
+                </div>
+                <a href="https://github.com/davesnake01/LecturaJsontoBD" class="btn" target="_blank">Ver en GitHub</a>
+            </div>
+
+            <div class="card">
+                <h3>🎙️ ML Correctivo para Whisper (Mejora de Transcripciones)</h3>
+                <p><strong>Contexto:</strong> En LitoralPress, implementé un modelo de lenguaje que mejora las transcripciones voice-to-text de Whisper.
+                Específicamente entrenado en dominio periodístico, corrige errores comunes en nombres, lugares y terminología. Aumenta precisión en 15-20%.</p>
+                <p>Sistema de transcripción automática (Speech-to-Text) basado en Whisper con post-procesamiento mediante ML.
+                Procesa archivos de audio de noticias, entrevistas y podcasts, extrayendo texto con alta precisión adaptado al contexto editorial.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Whisper</span>
+                    <span class="tag">Audio</span>
+                </div>
+                <a href="https://github.com/davesnake01/whisperdemo" class="btn" target="_blank">Ver en GitHub</a>
+            </div>
+
+            <div class="card">
+                <h3>🚀 Sistemas de Inventario Automatizados con Coolify</h3>
+                <p><strong>Contexto:</strong> Desarrollé múltiples sistemas de gestión de inventario completamente automatizados usando Coolify.
+                Simplifica deployments, orquestación de contenedores y gestión de aplicaciones en producción. Reduce tiempo de deployment de horas a minutos.</p>
+                <p>Plataforma de automatización que integra Coolify para orquestar aplicaciones backend, bases de datos y servicios complementarios.
+                Incluye monitoring, auto-scaling y recuperación ante fallos. Permite que equipos desplieguen cambios sin intervención de DevOps.</p>
+                <div class="tags">
+                    <span class="tag">Coolify</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Automatización</span>
+                    <span class="tag">DevOps</span>
+                </div>
+                <a href="https://coolify.io" class="btn" target="_blank">Más sobre Coolify</a>
+            </div>
+
+            <div class="card">
+                <h3>📈 Análisis de Frecuencia Textual</h3>
+                <p><strong>Contexto:</strong> Herramienta analítica usada en LitoralPress para extraer tendencias de cobertura mediática.
+                Identifica temas emergentes, palabras clave recurrentes y patrones de lenguaje en noticias. Alimenta insights para reportes ejecutivos.</p>
+                <p>Procesa volúmenes masivos de documentos y texto no estructurado, cuantificando palabras más recurrentes y patrones de lenguaje.
+                Genera métricas de análisis de contenido para reportes ejecutivos y análisis competitivo.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">NLP</span>
+                    <span class="tag">Análisis de Datos</span>
+                </div>
+                <a href="https://github.com/davesnake01/TopWords" class="btn" target="_blank">Ver en GitHub</a>
+            </div>
+
+            <div class="card">
+                <h3>🗣️ Análisis de Sentimiento en Español (NLP)</h3>
+                <p><strong>Contexto:</strong> Modelo de NLP propio en LitoralPress que clasifica contenido mediático en tiempo real.
+                Analiza noticias, comentarios y redes sociales para determinar sentimiento (positivo/negativo/neutro). Aplicado a 80.000+ registros diarios.</p>
+                <p>Herramienta especializada en procesamiento de lenguaje natural para español. Implementa análisis de sentimientos, extracción de entidades y evaluación de polaridad.
+                Adaptada al contexto editorial y mediático para máxima precisión.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">NLP</span>
+                    <span class="tag">Sentiment Analysis</span>
+                    <span class="tag">ML</span>
+                </div>
+                <a href="https://github.com/davesnake01/SpanishBlob" class="btn" target="_blank">Ver en GitHub</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 David Martí. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

@@ -203,99 +203,116 @@
 
         /* Container */
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
         h2 {
             font-size: 2.5rem;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             text-align: center;
             font-weight: 700;
+            animation: fadeInUp 0.8s ease;
         }
 
-        /* SECCIÓN: Proyectos en Divs Horizontales */
-        .projects-list {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* SECCIÓN: Featured Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-bottom: 80px;
         }
 
-        .project-horizontal-card {
-            background: rgba(30, 41, 59, 0.6);
+        .project-grid-card {
+            background: rgba(30, 41, 59, 0.5);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 28px;
+            overflow: hidden;
             transition: all 0.4s ease;
             backdrop-filter: blur(10px);
+            animation: slideInUp 0.6s ease forwards;
             opacity: 0;
-            transform: translateY(30px);
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
-        .project-horizontal-card:hover {
+        .project-grid-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-grid-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-grid-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-grid-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-grid-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-grid-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .project-grid-card:hover {
             border-color: var(--primary);
-            background: rgba(30, 41, 59, 0.9);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
         }
 
-        .project-horizontal-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(14, 165, 233, 0.05) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        .project-image > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-grid-info {
+            padding: 20px;
+        }
+
+        .project-grid-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
             color: var(--text-main);
             font-weight: 700;
         }
 
-        .project-horizontal-card p {
+        .project-grid-info p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
         }
 
-        .project-horizontal-card p strong {
-            color: var(--text-main);
-        }
-
-        .tags {
-            margin: 15px 0 20px 0;
+        .tech-stack-small {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
 
-        .tag {
-            background-color: rgba(56, 189, 248, 0.1);
+        .tech-tag-small {
+            background: rgba(56, 189, 248, 0.15);
             color: var(--primary);
-            padding: 4px 12px;
-            border-radius: 9999px;
-            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: 600;
             border: 1px solid rgba(56, 189, 248, 0.3);
-        }
-
-        .btn-project {
-            display: inline-block;
-            background-color: var(--primary);
-            color: var(--bg-dark);
-            text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            text-align: center;
-            transition: all 0.2s;
-            width: fit-content;
-        }
-
-        .btn-project:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
         }
 
         /* SECCIÓN: Work Experience */
@@ -323,10 +340,13 @@
             display: grid;
             grid-template-columns: 1fr 40px 1fr;
             gap: 20px;
+            animation: slideInUp 0.6s ease forwards;
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
         }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
 
         .timeline-content {
             background: rgba(30, 41, 59, 0.5);
@@ -388,10 +408,16 @@
         }
 
         .skill-item {
+            animation: slideInUp 0.6s ease forwards;
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
         }
+
+        .skill-item:nth-child(1) { animation-delay: 0.1s; }
+        .skill-item:nth-child(2) { animation-delay: 0.2s; }
+        .skill-item:nth-child(3) { animation-delay: 0.3s; }
+        .skill-item:nth-child(4) { animation-delay: 0.4s; }
+        .skill-item:nth-child(5) { animation-delay: 0.5s; }
+        .skill-item:nth-child(6) { animation-delay: 0.6s; }
 
         .skill-name {
             display: flex;
@@ -422,8 +448,20 @@
             height: 100%;
             background: linear-gradient(90deg, var(--primary), var(--primary-dark));
             border-radius: 3px;
-            width: 0;
-            transition: width 1s ease 0.3s;
+            animation: growWidth 1s ease forwards;
+            opacity: 0;
+        }
+
+        .skill-item:nth-child(1) .skill-fill { animation-delay: 0.3s; width: 95%; }
+        .skill-item:nth-child(2) .skill-fill { animation-delay: 0.4s; width: 90%; }
+        .skill-item:nth-child(3) .skill-fill { animation-delay: 0.5s; width: 85%; }
+        .skill-item:nth-child(4) .skill-fill { animation-delay: 0.6s; width: 88%; }
+        .skill-item:nth-child(5) .skill-fill { animation-delay: 0.7s; width: 92%; }
+        .skill-item:nth-child(6) .skill-fill { animation-delay: 0.8s; width: 80%; }
+
+        @keyframes growWidth {
+            from { width: 0 !important; opacity: 1; }
+            to { opacity: 1; }
         }
 
         /* SECCIÓN: Testimonials */
@@ -444,9 +482,13 @@
             border-radius: 12px;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            animation: slideInUp 0.6s ease forwards;
             opacity: 0;
-            transform: translateY(30px);
         }
+
+        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
 
         .testimonial-card:hover {
             border-color: var(--primary);
@@ -513,12 +555,6 @@
             background: rgba(15, 23, 42, 0.5);
         }
 
-        /* Clase general para activar la animación al hacer scroll */
-        .visible {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .timeline::before {
@@ -545,17 +581,62 @@
             }
         }
 
+        /* Animaciones */
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="background">
@@ -592,114 +673,106 @@
             Tech Lead con experiencia liderando equipos mientras mantengo participación técnica en backend production.
         </p>
 
-       <div class="cta-group">
-    <a href="https://linkedin.com/in/luisdavidmarti" target="_blank" class="cta-btn primary">
-        <i class="fab fa-linkedin"></i> LinkedIn
-    </a>
-    <a href="https://github.com/davesnake01" target="_blank" class="cta-btn secondary">
-        <i class="fab fa-github"></i> GitHub
-    </a>
-    <a href="mailto:luisdavidm1979@gmail.com" class="cta-btn secondary">
-        <i class="fas fa-envelope"></i> Email
-    </a>
-</div>
+        <div class="cta-group">
+            <a href="https://linkedin.com/in/luisdavidmarti" target="_blank" class="cta-btn primary">
+                📌 LinkedIn
+            </a>
+            <a href="https://github.com/davesnake01" target="_blank" class="cta-btn secondary">
+                💻 GitHub
+            </a>
+            <a href="mailto:luisdavidm1979@gmail.com" class="cta-btn secondary">
+                ✉️ Email
+            </a>
+        </div>
     </header>
 
     <div class="container">
-        <!-- PROYECTOS DESTACADOS EN DIVS HORIZONTALES (SIN ICONOS) -->
+        <!-- FEATURED PROJECTS SECTION -->
         <h2>Proyectos Destacados</h2>
-        <div class="projects-list">
-
-            <div class="project-horizontal-card">
-                <h3>Extracción de Entidades (NLP)</h3>
-                <p><strong>Contexto:</strong> Sistema usado en LitoralPress para procesar millones de menciones de personas en noticias y redes sociales. Parte del pipeline de análisis que alimenta reportes a 300+ clientes.</p>
-                <p>Script optimizado en Python que analiza volúmenes masivos de texto no estructurado para aislar y extraer nombres de personas con alta precisión. Implementa expresiones regulares avanzadas y limpieza de datos para garantizar integridad en pipelines ETL de producción.</p>
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">NLP</span>
-                    <span class="tag">Regex</span>
-                    <span class="tag">ETL</span>
+        <div class="projects-grid">
+            <div class="project-grid-card">
+                <div class="project-image">
+                    <span>🔍</span>
                 </div>
-                <a href="https://github.com/davesnake01/ExtractHumanNames" class="btn-project" target="_blank">Ver en GitHub</a>
+                <div class="project-grid-info">
+                    <h4>Extracción de Entidades (NLP)</h4>
+                    <p>Script Python optimizado para procesar millones de menciones en noticias y redes sociales.</p>
+                    <div class="tech-stack-small">
+                        <span class="tech-tag-small">Python</span>
+                        <span class="tech-tag-small">NLP</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="project-horizontal-card">
-                <h3>Elasticsearch a Excel (Automatización de Reportes)</h3>
-                <p><strong>Contexto:</strong> Sistema de reportes automatizados en LitoralPress. Extrae y procesa 80.000+ registros diarios de Elasticsearch para generar informes distribuidos a 300 clientes, <strong>sin intervención manual</strong>. Reduce tiempo de generación de horas a minutos.</p>
-                <p>Pipeline Python que consulta Elasticsearch, procesa datos con Pandas, y genera reportes estructurados en Excel listos para distribución. Incluye validación de datos, manejo de errores y notificaciones automáticas.</p>
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Elasticsearch</span>
-                    <span class="tag">Pandas</span>
-                    <span class="tag">Automatización</span>
+            <div class="project-grid-card">
+                <div class="project-image">
+                    <span>📊</span>
                 </div>
-                <a href="https://github.com/davesnake01/ElastictoPandasExcel" class="btn-project" target="_blank">Ver en GitHub</a>
+                <div class="project-grid-info">
+                    <h4>Elasticsearch a Excel</h4>
+                    <p>Pipeline que extrae 80.000+ registros diarios y genera reportes automáticos.</p>
+                    <div class="tech-stack-small">
+                        <span class="tech-tag-small">Python</span>
+                        <span class="tech-tag-small">Elasticsearch</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="project-horizontal-card">
-                <h3>Pipeline ETL: Ingesta de JSON a Base de Datos</h3>
-                <p><strong>Contexto:</strong> Sistema crítico para migración e ingesta de datos en LitoralPress. Procesa fuentes JSON heterogéneas (APIs, archivos, feeds) y los migra de forma automática a base de datos con validación de integridad.</p>
-                <p>Solución ETL robusta que lee, parsea y migra estructuras JSON complejas hacia bases de datos. Incluye validación de esquemas, manejo de datos inconsistentes y recuperación ante errores. Garantiza integridad de datos en volúmenes altos.</p>
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">ETL</span>
-                    <span class="tag">JSON</span>
-                    <span class="tag">SQL</span>
+            <div class="project-grid-card">
+                <div class="project-image">
+                    <span>🗄️</span>
                 </div>
-                <a href="https://github.com/davesnake01/LecturaJsontoBD" class="btn-project" target="_blank">Ver en GitHub</a>
+                <div class="project-grid-info">
+                    <h4>Pipeline ETL JSON</h4>
+                    <p>Solución robusta que migra estructuras JSON complejas a base de datos.</p>
+                    <div class="tech-stack-small">
+                        <span class="tech-tag-small">Python</span>
+                        <span class="tech-tag-small">ETL</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="project-horizontal-card">
-                <h3>ML Correctivo para Whisper (Mejora de Transcripciones)</h3>
-                <p><strong>Contexto:</strong> En LitoralPress, implementé un modelo de lenguaje que mejora las transcripciones voice-to-text de Whisper. Específicamente entrenado en dominio periodístico, corrige errores comunes en nombres, lugares y terminología. Aumenta precisión en 15-20%.</p>
-                <p>Sistema de transcripción automática (Speech-to-Text) basado en Whisper con post-procesamiento mediante ML. Procesa archivos de audio de noticias, entrevistas y podcasts, extrayendo texto con alta precisión adaptado al contexto editorial.</p>
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Machine Learning</span>
-                    <span class="tag">Whisper</span>
-                    <span class="tag">Audio</span>
+            <div class="project-grid-card">
+                <div class="project-image">
+                    <span>🎙️</span>
                 </div>
-                <a href="https://github.com/davesnake01/whisperdemo" class="btn-project" target="_blank">Ver en GitHub</a>
+                <div class="project-grid-info">
+                    <h4>ML Correctivo para Whisper</h4>
+                    <p>Modelo de lenguaje que mejora transcripciones voice-to-text en dominio periodístico.</p>
+                    <div class="tech-stack-small">
+                        <span class="tech-tag-small">ML</span>
+                        <span class="tech-tag-small">Whisper</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="project-horizontal-card">
-                <h3>Sistemas de Inventario Automatizados con Coolify</h3>
-                <p><strong>Contexto:</strong> Desarrollé múltiples sistemas de gestión de inventario completamente automatizados usando Coolify. Simplifica deployments, orquestación de contenedores y gestión de aplicaciones en producción. Reduce tiempo de deployment de horas a minutos.</p>
-                <p>Plataforma de automatización que integra Coolify para orquestar aplicaciones backend, bases de datos y servicios complementarios. Incluye monitoring, auto-scaling y recuperación ante fallos. Permite que equipos desplieguen cambios sin intervención de DevOps.</p>
-                <div class="tags">
-                    <span class="tag">Coolify</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">Automatización</span>
-                    <span class="tag">DevOps</span>
+            <div class="project-grid-card">
+                <div class="project-image">
+                    <span>🚀</span>
                 </div>
-                <a href="https://coolify.io" class="btn-project" target="_blank">Más sobre Coolify</a>
+                <div class="project-grid-info">
+                    <h4>Sistemas de Inventario Coolify</h4>
+                    <p>Plataforma de automatización que simplifica deployments y orquestación.</p>
+                    <div class="tech-stack-small">
+                        <span class="tech-tag-small">Coolify</span>
+                        <span class="tech-tag-small">Docker</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="project-horizontal-card">
-                <h3>Análisis de Frecuencia Textual</h3>
-                <p><strong>Contexto:</strong> Herramienta analítica usada in LitoralPress para extraer tendencias de cobertura mediática. Identifica temas emergentes, palabras clave recurrentes y patrones de lenguaje en noticias. Alimenta insights para reportes ejecutivos.</p>
-                <p>Procesa volúmenes masivos de documentos y texto no estructurado, cuantificando palabras más recurrentes y patrones de lenguaje. Genera métricas de análisis de contenido para reportes ejecutivos y análisis competitivo.</p>
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">NLP</span>
-                    <span class="tag">Análisis de Datos</span>
+            <div class="project-grid-card">
+                <div class="project-image">
+                    <span>📈</span>
                 </div>
-                <a href="https://github.com/davesnake01/TopWords" class="btn-project" target="_blank">Ver en GitHub</a>
-            </div>
-
-            <div class="project-horizontal-card">
-                <h3>Análisis de Sentimiento en Español (NLP)</h3>
-                <p><strong>Contexto:</strong> Modelo de NLP propio en LitoralPress que clasifica contenido mediático en tiempo real. Analiza noticias, comentarios y redes sociales para determinar sentimiento (positivo/negativo/neutro). Aplicado a 80.000+ registros diarios.</p>
-                <p>Herramienta especializada en procesamiento de lenguaje natural para español. Implementa análisis de sentimientos, extracción de entidades y evaluación de polaridad. Adaptada al contexto editorial y mediático para máxima precisión.</p>
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">NLP</span>
-                    <span class="tag">Sentiment Analysis</span>
-                    <span class="tag">ML</span>
+                <div class="project-grid-info">
+                    <h4>Análisis de Sentimiento</h4>
+                    <p>Modelo NLP que clasifica contenido mediático en tiempo real con alta precisión.</p>
+                    <div class="tech-stack-small">
+                        <span class="tech-tag-small">NLP</span>
+                        <span class="tech-tag-small">ML</span>
+                    </div>
                 </div>
-                <a href="https://github.com/davesnake01/SpanishBlob" class="btn-project" target="_blank">Ver en GitHub</a>
             </div>
-
         </div>
 
         <!-- WORK EXPERIENCE SECTION -->
@@ -751,7 +824,7 @@
                         <span>95%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-fill" style="width: 95%;"></div>
+                        <div class="skill-fill"></div>
                     </div>
                 </div>
 
@@ -761,7 +834,7 @@
                         <span>90%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-fill" style="width: 90%;"></div>
+                        <div class="skill-fill"></div>
                     </div>
                 </div>
 
@@ -771,7 +844,7 @@
                         <span>85%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-fill" style="width: 85%;"></div>
+                        <div class="skill-fill"></div>
                     </div>
                 </div>
 
@@ -781,7 +854,7 @@
                         <span>88%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-fill" style="width: 88%;"></div>
+                        <div class="skill-fill"></div>
                     </div>
                 </div>
 
@@ -791,7 +864,7 @@
                         <span>92%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-fill" style="width: 92%;"></div>
+                        <div class="skill-fill"></div>
                     </div>
                 </div>
 
@@ -801,7 +874,7 @@
                         <span>80%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-fill" style="width: 80%;"></div>
+                        <div class="skill-fill"></div>
                     </div>
                 </div>
             </div>
@@ -861,18 +934,19 @@
     </footer>
 
     <script>
-        // Scroll Reveal Animation para contenedores horizontales y secciones
-        const observerElements = document.querySelectorAll('.project-horizontal-card, .timeline-item, .skill-item, .testimonial-card');
+        // Scroll Reveal Animation para tarjetas y elementos
+        const observerElements = document.querySelectorAll('.project-grid-card, .timeline-item, .skill-item, .testimonial-card');
 
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver((entries, observerInstance) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
